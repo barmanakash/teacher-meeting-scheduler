@@ -1,0 +1,40 @@
+{
+  "name": "teacher-meeting-scheduler-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.15.0",
+    "@reduxjs/toolkit": "^1.9.5",
+    "react-redux": "^8.1.2",
+    "axios": "^1.5.0",
+    "react-hook-form": "^7.45.4",
+    "date-fns": "^2.30.0",
+    "react-datepicker": "^4.18.0",
+    "react-calendar": "^4.6.0",
+    "recharts": "^2.8.0",
+    "react-hot-toast": "^2.4.1",
+    "lucide-react": "^0.263.1",
+    "@headlessui/react": "^1.7.17",
+    "clsx": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.21",
+    "@types/react-dom": "^18.2.7",
+    "@types/react-datepicker": "^4.18.0",
+    "@types/react-calendar": "^4.1.0",
+    "typescript": "^5.2.2",
+    "react-scripts": "5.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test"
+  },
+  "browserslist": {
+    "production": [">0.2%", "not dead", "not op_mini all"],
+    "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
+  },
+  "proxy": "http://localhost:5000"
+}

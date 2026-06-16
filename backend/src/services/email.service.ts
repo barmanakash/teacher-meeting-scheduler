@@ -1,13 +1,15 @@
 import nodemailer from 'nodemailer';
 import { logger } from '../utils/logger';
 
-const transporter = nodemailer.createTransport({
-  service: process.env.EMAIL_SERVICE || 'gmail',
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
+const getTransporter = () => {
+  return nodemailer.createTransport({
+    service: process.env.EMAIL_SERVICE || 'gmail',
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+    },
+  });
+};
 
 interface MeetingEmailData {
   to: string;
@@ -68,7 +70,7 @@ export const sendMeetingInvitation = async (data: MeetingEmailData): Promise<voi
   `;
 
   try {
-    await transporter.sendMail({
+    await getTransporter().sendMail({
       from: `"Meeting Scheduler" <${process.env.EMAIL_USER}>`,
       to: data.to,
       subject: `Meeting Invitation: ${data.meetingTitle}`,
@@ -113,7 +115,7 @@ export const sendMeetingReminder = async (
   `;
 
   try {
-    await transporter.sendMail({
+    await getTransporter().sendMail({
       from: `"Meeting Scheduler" <${process.env.EMAIL_USER}>`,
       to: data.to,
       subject: `Reminder: ${data.meetingTitle} starts in ${timeLabel}`,
@@ -149,7 +151,7 @@ export const sendCancellationEmail = async (
   `;
 
   try {
-    await transporter.sendMail({
+    await getTransporter().sendMail({
       from: `"Meeting Scheduler" <${process.env.EMAIL_USER}>`,
       to,
       subject: `Meeting Cancelled: ${meetingTitle}`,
@@ -184,7 +186,7 @@ export const sendRescheduleEmail = async (data: MeetingEmailData, oldStartTime: 
   `;
 
   try {
-    await transporter.sendMail({
+    await getTransporter().sendMail({
       from: `"Meeting Scheduler" <${process.env.EMAIL_USER}>`,
       to: data.to,
       subject: `Meeting Rescheduled: ${data.meetingTitle}`,

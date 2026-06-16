@@ -1,12 +1,6 @@
 import { google } from 'googleapis';
 import { logger } from '../utils/logger';
 
-const oauth2Client = new google.auth.OAuth2(
-  process.env.GOOGLE_CLIENT_ID,
-  process.env.GOOGLE_CLIENT_SECRET,
-  process.env.GOOGLE_CALLBACK_URL
-);
-
 export interface CalendarEventData {
   title: string;
   description: string;
@@ -21,6 +15,13 @@ export const createCalendarEvent = async (
   eventData: CalendarEventData
 ): Promise<{ eventId: string; meetLink: string }> => {
   try {
+    // Create oauth2Client INSIDE the function so env vars are always loaded
+    const oauth2Client = new google.auth.OAuth2(
+      process.env.GOOGLE_CLIENT_ID,
+      process.env.GOOGLE_CLIENT_SECRET,
+      process.env.GOOGLE_CALLBACK_URL
+    );
+
     oauth2Client.setCredentials({ refresh_token: refreshToken });
 
     const calendar = google.calendar({ version: 'v3', auth: oauth2Client });
@@ -57,10 +58,14 @@ export const createCalendarEvent = async (
     const eventId = response.data.id || '';
     const meetLink = response.data.conferenceData?.entryPoints?.[0]?.uri || '';
 
+    logger.info(`Google Meet link created: ${meetLink}`);
     return { eventId, meetLink };
-  } catch (error) {
-    logger.error('Error creating calendar event:', error);
-    // Return mock data if Google API fails (dev fallback)
+  } catch (error: any) {
+    logger.error('Google Calendar API Error:', {
+      message: error?.message,
+      data: error?.response?.data,
+      status: error?.response?.status,
+    });
     return {
       eventId: `mock-event-${Date.now()}`,
       meetLink: `https://meet.google.com/mock-${Math.random().toString(36).substr(2, 9)}`,
@@ -74,6 +79,11 @@ export const updateCalendarEvent = async (
   eventData: Partial<CalendarEventData>
 ): Promise<void> => {
   try {
+    const oauth2Client = new google.auth.OAuth2(
+      process.env.GOOGLE_CLIENT_ID,
+      process.env.GOOGLE_CLIENT_SECRET,
+      process.env.GOOGLE_CALLBACK_URL
+    );
     oauth2Client.setCredentials({ refresh_token: refreshToken });
     const calendar = google.calendar({ version: 'v3', auth: oauth2Client });
 
@@ -95,8 +105,16 @@ export const updateCalendarEvent = async (
   }
 };
 
-export const deleteCalendarEvent = async (refreshToken: string, eventId: string): Promise<void> => {
+export const deleteCalendarEvent = async (
+  refreshToken: string,
+  eventId: string
+): Promise<void> => {
   try {
+    const oauth2Client = new google.auth.OAuth2(
+      process.env.GOOGLE_CLIENT_ID,
+      process.env.GOOGLE_CLIENT_SECRET,
+      process.env.GOOGLE_CALLBACK_URL
+    );
     oauth2Client.setCredentials({ refresh_token: refreshToken });
     const calendar = google.calendar({ version: 'v3', auth: oauth2Client });
 

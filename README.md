@@ -243,6 +243,86 @@ teacher-meeting-scheduler/
 | `EMAIL_PASS` | Gmail App Password | 16-char app password |
 
 ---
+## Database Design (ER Diagram)
+
+```mermaid
+erDiagram
+
+    USERS ||--o{ MEETINGS : creates
+    USERS ||--o{ AVAILABILITY : configures
+    USERS ||--o{ AUDIT_LOGS : generates
+    USERS ||--o{ REPORT_EXPORTS : exports
+
+    MEETINGS ||--o{ MEETING_PARTICIPANTS : contains
+    USERS ||--o{ MEETING_PARTICIPANTS : attends
+
+    MEETING_PARTICIPANTS ||--|| ATTENDANCE : records
+
+    MEETINGS ||--o{ NOTIFICATIONS : triggers
+
+    USERS {
+        ObjectId _id PK
+        string googleId
+        string name
+        string email
+        string role
+    }
+
+    MEETINGS {
+        ObjectId _id PK
+        ObjectId organizerId FK
+        string title
+        string meetingType
+        datetime startTime
+        datetime endTime
+        string status
+    }
+
+    MEETING_PARTICIPANTS {
+        ObjectId _id PK
+        ObjectId meetingId FK
+        ObjectId candidateId FK
+        string invitationStatus
+    }
+
+    ATTENDANCE {
+        ObjectId _id PK
+        ObjectId participantId FK
+        datetime joinTime
+        datetime leaveTime
+        int durationMinutes
+        string status
+    }
+
+    AVAILABILITY {
+        ObjectId _id PK
+        ObjectId teacherId FK
+        string timezone
+    }
+
+    NOTIFICATIONS {
+        ObjectId _id PK
+        ObjectId meetingId FK
+        ObjectId userId FK
+        string type
+    }
+
+    AUDIT_LOGS {
+        ObjectId _id PK
+        ObjectId userId FK
+        string action
+    }
+
+    REPORT_EXPORTS {
+        ObjectId _id PK
+        ObjectId teacherId FK
+        string format
+    }
+}
+```
+
+
+
 
 ## License
 

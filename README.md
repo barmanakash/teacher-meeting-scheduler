@@ -99,7 +99,7 @@ cd ../frontend && npm install
 cd backend && npm run dev
 
 # Terminal 2 — Frontend
-cd frontend && npm start
+cd frontend && yarn start
 ```
 
 Open [http://localhost:3000](http://localhost:3000)

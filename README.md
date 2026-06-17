@@ -243,7 +243,7 @@ teacher-meeting-scheduler/
 | `EMAIL_PASS` | Gmail App Password | 16-char app password |
 
 ---
-## Database Design (ER Diagram)
+
 
 ```mermaid
 erDiagram
@@ -261,7 +261,7 @@ erDiagram
     MEETINGS ||--o{ NOTIFICATIONS : triggers
 
     USERS {
-        ObjectId _id PK
+        string _id
         string googleId
         string name
         string email
@@ -269,58 +269,56 @@ erDiagram
     }
 
     MEETINGS {
-        ObjectId _id PK
-        ObjectId organizerId FK
+        string _id
+        string organizerId
         string title
         string meetingType
-        datetime startTime
-        datetime endTime
+        string startTime
+        string endTime
         string status
     }
 
     MEETING_PARTICIPANTS {
-        ObjectId _id PK
-        ObjectId meetingId FK
-        ObjectId candidateId FK
+        string _id
+        string meetingId
+        string candidateId
         string invitationStatus
     }
 
     ATTENDANCE {
-        ObjectId _id PK
-        ObjectId participantId FK
-        datetime joinTime
-        datetime leaveTime
-        int durationMinutes
-        string status
+        string _id
+        string participantId
+        string joinTime
+        string leaveTime
+        string durationMinutes
     }
 
     AVAILABILITY {
-        ObjectId _id PK
-        ObjectId teacherId FK
+        string _id
+        string teacherId
         string timezone
     }
 
     NOTIFICATIONS {
-        ObjectId _id PK
-        ObjectId meetingId FK
-        ObjectId userId FK
+        string _id
+        string meetingId
+        string userId
         string type
     }
 
     AUDIT_LOGS {
-        ObjectId _id PK
-        ObjectId userId FK
+        string _id
+        string userId
         string action
+        string ip
     }
 
     REPORT_EXPORTS {
-        ObjectId _id PK
-        ObjectId teacherId FK
+        string _id
+        string teacherId
         string format
     }
-}
 ```
-
 
 
 

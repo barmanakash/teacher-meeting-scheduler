@@ -243,6 +243,8 @@ teacher-meeting-scheduler/
 | `EMAIL_PASS` | Gmail App Password | 16-char app password |
 
 ---
+## Database Design (ER Diagram)
+
 
 
 ```mermaid

@@ -66,7 +66,6 @@ const MeetingsPage: React.FC = () => {
         )}
       </div>
 
-      {/* Filters */}
       <div className="card py-4 flex flex-wrap gap-3 items-center">
         <div className="relative flex-1 min-w-48">
           <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
@@ -88,7 +87,6 @@ const MeetingsPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Meeting Grid */}
       {loading ? <LoadingSpinner /> : (
         <>
           {filtered.length === 0 ? (
@@ -153,7 +151,6 @@ const MeetingsPage: React.FC = () => {
             </div>
           )}
 
-          {/* Pagination */}
           {total > 12 && (
             <div className="flex items-center justify-center gap-2">
               <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1} className="btn-secondary text-sm py-1.5">Prev</button>
@@ -164,7 +161,6 @@ const MeetingsPage: React.FC = () => {
         </>
       )}
 
-      {/* Cancel Modal */}
       {cancelId && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-xl shadow-xl max-w-md w-full p-6">

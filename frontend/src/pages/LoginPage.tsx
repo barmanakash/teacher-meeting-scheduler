@@ -52,7 +52,6 @@ const LoginPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Right: Login Card */}
           <div className="bg-white rounded-2xl shadow-2xl p-8">
             <div className="text-center mb-8">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-indigo-100 rounded-2xl mb-4">

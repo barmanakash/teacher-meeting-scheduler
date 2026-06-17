@@ -79,7 +79,6 @@ const CreateMeetingPage: React.FC = () => {
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-        {/* Basic Info */}
         <div className="card space-y-4">
           <h2 className="font-semibold text-gray-900">Meeting Details</h2>
 
@@ -142,7 +141,6 @@ const CreateMeetingPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Candidate Selection */}
         <div className="card space-y-4">
           <div className="flex items-center justify-between">
             <h2 className="font-semibold text-gray-900">Select Participants</h2>
@@ -151,7 +149,6 @@ const CreateMeetingPage: React.FC = () => {
             )}
           </div>
 
-          {/* Selected Chips */}
           {selectedCandidates.length > 0 && (
             <div className="flex flex-wrap gap-2 p-3 bg-indigo-50 rounded-lg">
               {selectedCandidates.map((c) => (
@@ -165,7 +162,6 @@ const CreateMeetingPage: React.FC = () => {
             </div>
           )}
 
-          {/* Search */}
           <div className="relative">
             <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
             <input
@@ -175,7 +171,6 @@ const CreateMeetingPage: React.FC = () => {
             />
           </div>
 
-          {/* Candidate List */}
           <div className="max-h-64 overflow-y-auto space-y-2 border border-gray-200 rounded-lg p-2">
             {loading ? (
               <p className="text-center text-gray-400 text-sm py-4">Searching...</p>

@@ -86,7 +86,6 @@ const AttendancePage: React.FC = () => {
         </div>
       </div>
 
-      {/* Summary */}
       <div className="grid grid-cols-3 gap-4">
         <div className="card text-center py-4">
           <p className="text-3xl font-bold text-indigo-600">{total}</p>
@@ -102,7 +101,6 @@ const AttendancePage: React.FC = () => {
         </div>
       </div>
 
-      {/* Attendance Table */}
       <div className="card overflow-hidden p-0">
         <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -132,7 +130,6 @@ const AttendancePage: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Status Select */}
                   <div className="flex flex-wrap items-center gap-2">
                     {STATUSES.map((s) => (
                       <button key={s} type="button"
@@ -146,7 +143,6 @@ const AttendancePage: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Times */}
                 <div className="flex flex-wrap gap-3 mt-3 ml-12">
                   <div>
                     <label className="text-xs text-gray-400">Join Time</label>

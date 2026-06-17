@@ -30,7 +30,6 @@ const ReportsPage: React.FC = () => {
     setExporting(type);
     try {
       const res = type === 'excel' ? await reportsApi.exportExcel() : await reportsApi.exportPDF();
-      // const blob = new Blob([res.data], { type: res.headers['content-type'] });
       const contentType = String(res.headers['content-type'] || '');
 
       const blob = new Blob([res.data], {
@@ -78,7 +77,6 @@ const ReportsPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Date Filter */}
       <div className="card flex flex-wrap gap-4 items-end py-4">
         <div>
           <label className="label text-xs">Start Date</label>
@@ -94,7 +92,6 @@ const ReportsPage: React.FC = () => {
 
       {loading ? <LoadingSpinner /> : (
         <>
-          {/* KPI Cards */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               { label: 'Total Meetings', value: analytics?.totalMeetings ?? 0, icon: <Calendar size={18} className="text-indigo-600" />, color: 'bg-indigo-100' },
@@ -113,7 +110,6 @@ const ReportsPage: React.FC = () => {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-6">
-            {/* Attendance Status Pie */}
             <div className="card">
               <h2 className="font-semibold text-gray-900 mb-4">Attendance Distribution</h2>
               {attendancePieData.length === 0 ? (
@@ -132,7 +128,6 @@ const ReportsPage: React.FC = () => {
               )}
             </div>
 
-            {/* Meeting Types Bar */}
             <div className="card">
               <h2 className="font-semibold text-gray-900 mb-4">Meetings by Type</h2>
               {typeBarData.length === 0 ? (
@@ -151,7 +146,6 @@ const ReportsPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Rates */}
           <div className="card">
             <h2 className="font-semibold text-gray-900 mb-4">Performance Overview</h2>
             <div className="space-y-3">

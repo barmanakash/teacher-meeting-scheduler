@@ -58,7 +58,6 @@ const MeetingDetailPage: React.FC = () => {
         )}
       </div>
 
-      {/* Details Card */}
       <div className="card space-y-4">
         <h2 className="font-semibold text-gray-900 text-sm uppercase tracking-wide text-gray-400">Meeting Info</h2>
 
@@ -116,7 +115,6 @@ const MeetingDetailPage: React.FC = () => {
         )}
       </div>
 
-      {/* Google Meet */}
       {m.googleMeetLink && m.status !== 'cancelled' && (
         <div className="card bg-gradient-to-r from-indigo-50 to-purple-50 border-indigo-200">
           <div className="flex items-center justify-between">
@@ -135,7 +133,6 @@ const MeetingDetailPage: React.FC = () => {
         </div>
       )}
 
-      {/* Organizer */}
       <div className="card">
         <h2 className="font-semibold text-gray-900 mb-3">Organizer</h2>
         <div className="flex items-center gap-3">
@@ -153,7 +150,6 @@ const MeetingDetailPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Participants */}
       <div className="card">
         <div className="flex items-center gap-2 mb-3">
           <Users size={16} className="text-indigo-500" />

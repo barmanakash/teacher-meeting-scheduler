@@ -79,7 +79,6 @@ const AvailabilityPage: React.FC = () => {
         <p className="text-gray-500 text-sm mt-1">Configure your working hours and blocked times</p>
       </div>
 
-      {/* Working Hours */}
       <div className="card space-y-4">
         <div className="flex items-center gap-2">
           <Clock size={16} className="text-indigo-500" />
@@ -122,7 +121,6 @@ const AvailabilityPage: React.FC = () => {
         </button>
       </div>
 
-      {/* Holidays */}
       <div className="card space-y-4">
         <h2 className="font-semibold text-gray-900">Holidays / Days Off</h2>
         <div className="flex gap-2">
@@ -139,7 +137,6 @@ const AvailabilityPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Blocked Slots */}
       <div className="card space-y-4">
         <h2 className="font-semibold text-gray-900">Blocked Time Slots</h2>
         <div className="space-y-2">

@@ -38,7 +38,6 @@ const ProfilePage: React.FC = () => {
     <div className="max-w-xl mx-auto space-y-6">
       <h1 className="text-2xl font-bold text-gray-900">Profile</h1>
 
-      {/* Avatar Card */}
       <div className="card flex items-center gap-5">
         {user?.profileImage ? (
           <img src={user.profileImage} alt="" className="w-20 h-20 rounded-full border-4 border-indigo-100" />
@@ -58,7 +57,6 @@ const ProfilePage: React.FC = () => {
         </div>
       </div>
 
-      {/* Info */}
       <div className="card space-y-4">
         <h2 className="font-semibold text-gray-900">Account Information</h2>
         <div className="space-y-3">
@@ -86,7 +84,6 @@ const ProfilePage: React.FC = () => {
         </div>
       </div>
 
-      {/* Edit Name */}
       <div className="card space-y-4">
         <h2 className="font-semibold text-gray-900">Edit Profile</h2>
         <div>
@@ -99,7 +96,6 @@ const ProfilePage: React.FC = () => {
         </button>
       </div>
 
-      {/* Role Switch */}
       <div className="card space-y-3">
         <h2 className="font-semibold text-gray-900">Switch Role</h2>
         <p className="text-sm text-gray-500">

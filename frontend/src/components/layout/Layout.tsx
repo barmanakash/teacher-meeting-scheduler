@@ -31,7 +31,6 @@ const Layout: React.FC = () => {
 
   const Sidebar = () => (
     <div className="flex flex-col h-full bg-indigo-900 text-white w-64">
-      {/* Logo */}
       <div className="flex items-center gap-3 px-6 py-5 border-b border-indigo-800">
         <div className="bg-indigo-600 rounded-lg p-2"><Video size={20} /></div>
         <div>
@@ -40,7 +39,6 @@ const Layout: React.FC = () => {
         </div>
       </div>
 
-      {/* User Info */}
       <div className="px-4 py-4 border-b border-indigo-800">
         <div className="flex items-center gap-3">
           {user?.profileImage ? (
@@ -59,7 +57,6 @@ const Layout: React.FC = () => {
         </div>
       </div>
 
-      {/* Nav Links */}
       <nav className="flex-1 px-3 py-4 space-y-1">
         {filtered.map(({ to, icon: Icon, label }) => (
           <NavLink
@@ -77,7 +74,6 @@ const Layout: React.FC = () => {
         ))}
       </nav>
 
-      {/* Logout */}
       <div className="px-3 pb-4">
         <button
           onClick={handleLogout}
@@ -92,12 +88,10 @@ const Layout: React.FC = () => {
 
   return (
     <div className="flex h-screen overflow-hidden bg-gray-100">
-      {/* Desktop Sidebar */}
       <aside className="hidden lg:flex flex-shrink-0">
         <Sidebar />
       </aside>
 
-      {/* Mobile Sidebar Overlay */}
       {sidebarOpen && (
         <div className="lg:hidden fixed inset-0 z-50 flex">
           <div className="fixed inset-0 bg-black/50" onClick={() => setSidebarOpen(false)} />
@@ -107,9 +101,7 @@ const Layout: React.FC = () => {
         </div>
       )}
 
-      {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Mobile Header */}
         <header className="lg:hidden flex items-center justify-between px-4 py-3 bg-indigo-900 text-white">
           <button onClick={() => setSidebarOpen(true)}>
             <Menu size={22} />
@@ -118,7 +110,6 @@ const Layout: React.FC = () => {
           <div className="w-6" />
         </header>
 
-        {/* Page Content */}
         <main className="flex-1 overflow-y-auto p-4 lg:p-6">
           <Outlet />
         </main>

@@ -15,7 +15,6 @@ export const createCalendarEvent = async (
   eventData: CalendarEventData
 ): Promise<{ eventId: string; meetLink: string }> => {
   try {
-    // Create oauth2Client INSIDE the function so env vars are always loaded
     const oauth2Client = new google.auth.OAuth2(
       process.env.GOOGLE_CLIENT_ID,
       process.env.GOOGLE_CLIENT_SECRET,

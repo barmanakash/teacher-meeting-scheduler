@@ -3,10 +3,10 @@ import mongoose, { Document, Schema } from 'mongoose';
 export interface IAvailability extends Document {
   teacher: mongoose.Types.ObjectId;
   workingHours: {
-    start: string; // "09:00"
-    end: string;   // "18:00"
+    start: string;
+    end: string;
   };
-  workingDays: number[]; // 0=Sun, 1=Mon, ..., 6=Sat
+  workingDays: number[];
   holidays: Date[];
   blockedSlots: {
     start: Date;

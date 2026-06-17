@@ -27,7 +27,7 @@ export const configurePassport = (): void => {
               name: profile.displayName,
               email: profile.emails?.[0]?.value || '',
               profileImage: profile.photos?.[0]?.value || '',
-              role: 'candidate', // default role; can be updated by admin
+              role: 'candidate',
               refreshToken,
               lastLogin: new Date(),
             });

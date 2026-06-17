@@ -51,9 +51,9 @@ app.use(session({
   secret: process.env.SESSION_SECRET || 'session_secret',
   resave: false,
   saveUninitialized: false,
-  store: new session.MemoryStore(), // explicit - suppresses warning
+  store: new session.MemoryStore(),
   cookie: {
-    secure: false, // set true only with HTTPS
+    secure: false,
     httpOnly: true,
     maxAge: 24 * 60 * 60 * 1000,
   },

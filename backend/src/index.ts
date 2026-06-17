@@ -51,10 +51,11 @@ app.use(session({
   secret: process.env.SESSION_SECRET || 'session_secret',
   resave: false,
   saveUninitialized: false,
+  store: new session.MemoryStore(), // explicit - suppresses warning
   cookie: {
-    secure: process.env.NODE_ENV === 'production',
+    secure: false, // set true only with HTTPS
     httpOnly: true,
-    maxAge: 24 * 60 * 60 * 1000, // 1 day
+    maxAge: 24 * 60 * 60 * 1000,
   },
 }));
 
